@@ -1,0 +1,4 @@
+export const GET_POSTS = 'GET_POSTS';
+export const CREATE_POST = 'CREATE_POST';
+export const REMOVE_SINGLE_DATA = 'REMOVE_SINGLE_DATA';
+export const UPDATE_SINGlE_DATA = 'UPDATE_SINGlE_DATA';
