@@ -20,7 +20,13 @@ const SingleLinkPost = styled.div`
   }
 `;
 
-const Posts = () => {
+interface IPost {
+    id: number
+    title: string
+    body: string
+}
+
+const Posts: React.FC = () => {
   const dispatch = useDispatch();
   const postsData = useSelector(getPostSelector);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -32,7 +38,7 @@ const Posts = () => {
   }, []);
 
   const posts = postsData
-    .map((post) => (
+    .map((post: IPost) => (
       <SingleLinkPost key={post.id} >
         <Link href={`/posts/[id]`} as={`/posts/${post.id}`}>
           <a>
@@ -59,8 +65,11 @@ const Posts = () => {
   );
 };
 
+
+// @ts-ignore
 Posts.getInitialProps = ({ reduxStore }) => {
-  const { dispatch } = reduxStore;
+  // @ts-ignore
+    const { dispatch } = reduxStore;
   return {};
 };
 

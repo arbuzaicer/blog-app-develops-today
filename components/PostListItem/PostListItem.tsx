@@ -26,7 +26,12 @@ const PostWrapper = styled.div`
   }
 `;
 
-const PostListItem = ({ title, body }) => (
+interface IPostListItem {
+    title: string
+    body: string
+}
+
+const PostListItem: React.FC<IPostListItem> = ({ title, body }) => (
   <PostWrapper>
     <h2>{title}</h2>
     <div className="post-img">
@@ -37,4 +42,5 @@ const PostListItem = ({ title, body }) => (
     </div>
   </PostWrapper>
 );
+
 export default PostListItem;

@@ -91,7 +91,7 @@ const PreloaderWrapper = styled.div`
   }
 `;
 
-const Preloader = () => (
+const Preloader: React.FC = () => (
   <PreloaderWrapper>
     <div className="lds-roller">
       <div></div>

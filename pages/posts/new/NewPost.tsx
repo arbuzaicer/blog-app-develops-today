@@ -29,15 +29,15 @@ const FromWrapper = styled.form`
   }
 `;
 
-const NewPost = () => {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+const NewPost: React.FC = () => {
+  const [title, setTitle] = useState<string>("");
+  const [body, setBody] = useState<string>("");
   const dispatch = useDispatch();
 
-  const changeHandler = (e, setHook) => {
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>, setHook: (e: string) => void) => {
     setHook(e.target.value);
   };
-  const submitHandler = (e) => {
+  const submitHandler = (e: React.FormEvent<HTMLInputElement>): void => {
     e.preventDefault();
     dispatch(createPost(title, body));
     setTitle('');
@@ -57,13 +57,13 @@ const NewPost = () => {
       <Layout>
         <FromWrapper>
           <input
-            onChange={(e) => changeHandler(e, setTitle)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => changeHandler(e, setTitle)}
             value={title}
             type="text"
             placeholder="Enter post title"
           />
           <input
-            onChange={(e) => changeHandler(e, setBody)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => changeHandler(e, setBody)}
             value={body}
             type="text"
             placeholder="Enter post body"
@@ -80,7 +80,9 @@ const NewPost = () => {
   );
 };
 
+// @ts-ignore
 NewPost.getInitialProps = ({ reduxStore }) => {
+  // @ts-ignore
   const { dispatch } = reduxStore;
   return {};
 };

@@ -28,7 +28,7 @@ const NavigationWrapper = styled.nav`
   }
 `;
 
-const Navbar = () => (
+const Navbar: React.FC = () => (
   <NavbarWrapper>
     <LogoWrapper>
       <Link href="/">

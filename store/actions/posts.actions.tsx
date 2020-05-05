@@ -2,7 +2,7 @@ import api from '../../pages/api/api';
 import { CREATE_POST, GET_POSTS, REMOVE_SINGLE_DATA, UPDATE_SINGlE_DATA } from '../types';
 
 export const getPosts = () => {
-  return (dispatch) => {
+  return (dispatch: any) => {
     api
       .getPosts()
       .then((res) => {
@@ -17,8 +17,8 @@ export const getPosts = () => {
   };
 };
 
-export const createPost = (title, body) => {
-  return (dispatch) => {
+export const createPost = (title: string, body: string) => {
+  return (dispatch: any) => {
     api
       .createPost(title, body)
       .then((res) => {
@@ -33,8 +33,8 @@ export const createPost = (title, body) => {
   };
 };
 
-export const singlePost = (id) => {
-  return (dispatch) => {
+export const singlePost = (id: any) => {
+  return (dispatch: any) => {
     api
       .singlePost(id)
       .then((res) => {

@@ -16,7 +16,11 @@ const LayoutContainer = styled.div`
   }
 `;
 
-const Layout = ({ children }) => (
+interface ILayout {
+    children: any
+}
+
+const Layout: React.FC<ILayout> = ({ children }) => (
   <>
     <Navbar />
     <LayoutContainer className="container">

@@ -5,13 +5,24 @@ import {
   UPDATE_SINGlE_DATA,
 } from '../types';
 
+type Post = {
+  title: string
+  body: string
+}
+
+type InitialStateType = {
+  posts: Array<Post>
+  singlePostTitle: string
+  singlePostBody: string
+}
+
 const initialState = {
   posts: [],
   singlePostTitle: "",
   singlePostBody: "",
 };
 
-const PostsReducer = (state = initialState, action) => {
+const PostsReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case GET_POSTS: {
       return {

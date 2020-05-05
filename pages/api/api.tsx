@@ -6,8 +6,8 @@ const BASE_CONNECTION = axios.create({
 
 const api = {
   getPosts: () => BASE_CONNECTION.get("/posts"),
-  singlePost: (id) => BASE_CONNECTION.get(`/posts/${id}`),
-  createPost: (title, body) => BASE_CONNECTION.post("/posts", { title, body }),
+  singlePost: (id: number) => BASE_CONNECTION.get(`/posts/${id}`),
+  createPost: (title: string, body: string) => BASE_CONNECTION.post("/posts", { title, body }),
 };
 
 export default api;

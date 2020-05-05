@@ -13,7 +13,7 @@ import Layout from '../../components/Layout';
 import PostListItem from "../../components/PostListItem";
 import Head from "next/dist/next-server/lib/head";
 
-const SinglePost = () => {
+const SinglePost: React.FC = () => {
   const title = useSelector(singleTitleData);
   const body = useSelector(singleBodyData);
   const router = useRouter();
@@ -39,7 +39,9 @@ const SinglePost = () => {
   );
 };
 
+// @ts-ignore
 SinglePost.getInitialProps = ({ reduxStore }) => {
+  // @ts-ignore
   const { dispatch } = reduxStore;
   return {};
 };

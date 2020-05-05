@@ -4,7 +4,8 @@ import { Provider } from 'react-redux'
 import { initializeStore } from './store'
 import App from 'next/app'
 
-export const withRedux = (PageComponent, { ssr = true } = {}) => {
+export const withRedux = (PageComponent: any, { ssr = true } = {}) => {
+    // @ts-ignore
     const WithRedux = ({ initialReduxState, ...props }) => {
         const store = getOrInitializeStore(initialReduxState);
         return (
@@ -14,7 +15,7 @@ export const withRedux = (PageComponent, { ssr = true } = {}) => {
         )
     };
 
-    // Make sure people don't use this HOC on _app.js level
+    // Make sure people don't use this HOC on _app.tsx level
     if (process.env.NODE_ENV !== 'production') {
         const isAppHoc =
             PageComponent === App || PageComponent.prototype instanceof App
@@ -32,9 +33,10 @@ export const withRedux = (PageComponent, { ssr = true } = {}) => {
     }
 
     if (ssr || PageComponent.getInitialProps) {
-        WithRedux.getInitialProps = async context => {
+        WithRedux.getInitialProps = async (context: any) => {
             // Get or Create the store with `undefined` as initialState
             // This allows you to set a custom default initialState
+            // @ts-ignore
             const reduxStore = getOrInitializeStore()
 
             // Provide the store to getInitialProps of pages
@@ -57,15 +59,17 @@ export const withRedux = (PageComponent, { ssr = true } = {}) => {
     return WithRedux
 };
 
-let reduxStore;
-const getOrInitializeStore = initialState => {
+let reduxStore: any;
+const getOrInitializeStore = (initialState: any) => {
     // Always make a new store if server, otherwise state is shared between requests
     if (typeof window === 'undefined') {
+        // @ts-ignore
         return initializeStore(initialState)
     }
 
     // Create store if unavailable on the client and set it on the window object
     if (!reduxStore) {
+        // @ts-ignore
         reduxStore = initializeStore(initialState)
     }
 
